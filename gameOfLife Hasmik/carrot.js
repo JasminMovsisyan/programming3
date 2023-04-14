@@ -1,4 +1,6 @@
-class Carrot extends LivingCreauture{
+let LivingCreauture = require("./LivingCreauture")
+
+module.exports = class Carrot extends LivingCreauture{
     constructor(x,y){
        super(x,y)
         this.multiply = 0
