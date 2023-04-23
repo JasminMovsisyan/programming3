@@ -52,37 +52,8 @@ function nkarel(matrix) {
 
         }
 
-}
+    }  
     
-                   
-
-
-                for (let i in carrotArr) {
-                        carrotArr[i].mul()
-                }
-
-
-                for(let i in rabbitArr){
-                        rabbitArr[i].eat()
-                }
-
-                
-                for(let i in foxArr){
-                        foxArr[i].eat()
-                }
-                
-                for(let i in wolfArr){
-                        wolfArr[i].eat()
-                }
-
-               
-                for(let i in bearArr){
-                        bearArr[i].eat()
-                }
-
-                for(let i in lionArr){
-                        lionArr[i].eat()
-                }
-
-
 }
+
+socket.on('send matrix',nkarel)      

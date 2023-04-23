@@ -119,4 +119,3 @@ module.exports = class Bear extends LivingCreauture {
 
 }
 
-//

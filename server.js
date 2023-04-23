@@ -69,7 +69,7 @@ function matrixGenerator(matrixSize, carrot,rabbit,fox,wolf,bear,lion) {
     return matrix
 }
 
-let matrix = matrixGenerator(20, 10,16,4,8,6,9)
+matrix = matrixGenerator(20, 10,16,4,8,6,9)
 
 
 io.sockets.emit('send matrix',matrix)
@@ -121,3 +121,46 @@ function createObject(){
 
     io.sockets.emit('send matrix',matrix)
 }
+
+function game (){
+        for (let i in carrotArr) {
+                carrotArr[i].mul()
+                console.log(carrotArr.length);
+        }
+
+
+        for(let i in rabbitArr){
+                rabbitArr[i].eat()
+        }
+
+        
+        for(let i in foxArr){
+                foxArr[i].eat()
+        }
+        
+        for(let i in wolfArr){
+                wolfArr[i].eat()
+        }
+
+       
+        for(let i in bearArr){
+                bearArr[i].eat()
+        }
+
+        for(let i in lionArr){
+                lionArr[i].eat()
+        }
+
+        io.sockets.emit('send matrix',matrix)
+
+}
+
+
+setInterval(game,300)
+
+
+
+
+io.on('connection',function(){
+        createObject()
+})
