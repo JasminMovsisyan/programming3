@@ -30,7 +30,7 @@ module.exports = class Bear extends LivingCreauture {
 
     mul() {
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0]
@@ -49,7 +49,7 @@ module.exports = class Bear extends LivingCreauture {
 
     eat() {
         let emptyCell = this.chooseCell(4)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             this.energy += 12
@@ -84,7 +84,7 @@ module.exports = class Bear extends LivingCreauture {
 
     move(){
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
             if(newCell){
                 let newX = newCell[0]

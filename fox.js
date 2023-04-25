@@ -29,7 +29,7 @@ module.exports = class Fox extends LivingCreauture{
 
     mul() {
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0]
@@ -48,7 +48,7 @@ module.exports = class Fox extends LivingCreauture{
 
     eat() {
         let emptyCell = this.chooseCell( 2)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             this.energy += 7
@@ -82,7 +82,7 @@ module.exports = class Fox extends LivingCreauture{
 
     move(){
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
             if(newCell){
                 let newX = newCell[0]

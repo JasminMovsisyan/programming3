@@ -48,20 +48,20 @@ function matrixGenerator(matrixSize, carrot,rabbit,fox,wolf,bear,lion) {
     for (let i = 0; i < wolf; i++) {
             let x = Math.floor(Math.random() * matrixSize)
             let y = Math.floor(Math.random() * matrixSize)
-            matrix[y][x] = 3
+            matrix[y][x] = 4
     }
     //5 bear 
 
     for(let i = 0;i < bear;i ++){
             let x = Math.floor(Math.random()* matrixSize)
             let y = Math.floor(Math.random()* matrixSize)
-            matrix[y][x] = 4
+            matrix[y][x] = 5
     }
     //6 lion 
     for(let i = 0;i < lion;i ++){
             let x = Math.floor(Math.random()* matrixSize)
             let y = Math.floor(Math.random()* matrixSize)
-            matrix[y][x] = 5
+            matrix[y][x] = 6
     }
 
    
@@ -125,7 +125,7 @@ function createObject(){
 function game (){
         for (let i in carrotArr) {
                 carrotArr[i].mul()
-                console.log(carrotArr.length);
+                
         }
 
 

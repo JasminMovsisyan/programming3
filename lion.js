@@ -29,7 +29,7 @@ module.exports = class Lion extends LivingCreauture {
 
     mul() {
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0]
@@ -39,7 +39,7 @@ module.exports = class Lion extends LivingCreauture {
 
             let pre = new Lion(newX, newY)
 
-            predatorArr.push(pre)
+            lionArr.push(pre)
 
 
         }
@@ -48,7 +48,7 @@ module.exports = class Lion extends LivingCreauture {
 
     eat() {
         let emptyCell = this.chooseCell(4)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             this.energy += 10
@@ -82,7 +82,7 @@ module.exports = class Lion extends LivingCreauture {
 
     move(){
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.lenght)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
             if(newCell){
                 let newX = newCell[0]
