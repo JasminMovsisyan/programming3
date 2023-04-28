@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require("fs")
+const { kill } = require('process');
 
 app.use(express.static("."));
 
@@ -158,9 +159,55 @@ function game (){
 
 setInterval(game,300)
 
+var weath;
+
+function Winter() {
+    weath = "winter";
+    io.sockets.emit('Winter', weath);
+}
+
+function Summer() {
+    weath = "summer";
+    io.sockets.emit('Summer', weath);
+}
+
+function Spring() {
+    weath = "spring";
+    io.sockets.emit('Spring', weath);
+}
+function Autumn() {
+    weath = "autumn";
+    io.sockets.emit('Autumn', weath);
+}
 
 
 
-io.on('connection',function(){
-        createObject()
-})
+
+
+io.on('connection', function (socket) {
+        createObject();
+
+        // socket.on("addCarrot", AddCarrot);
+        // socket.on("addRabbit", AddRabbit);
+        // socket.on("killAll", Kill);
+        // socket.on("addFox",AddFox);
+        // socket.on("addWolf", AddWolf);
+        // socket.on("addBear", AddBear);
+        // socket.on("addLion", AddLion);
+    })
+
+var statistics = {}
+
+setInterval(function(){
+       statistics.carrot = carrotArr.length
+       statistics.rabbit =  rabbitArr.length
+       statistics.fox = foxArr.length
+       statistics.wolf = wolfArr.length
+       statistics.bear = bearArr.length
+       statistics.lion = lionArr.length
+
+       fs.writeFile("statistics.json",JSON.stringify(statistics),function(){
+            console.log("statistics");
+       })
+     
+},1000)

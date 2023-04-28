@@ -1,10 +1,23 @@
 var socket = io()
-
 var side = 30
 
 function setup() {
         createCanvas(20 * side, 20 * side)
 }
+socket.on("Winter", function (data) {
+    weath = data;
+})
+socket.on("Summer", function (data) {
+    weath = data;
+})
+socket.on("Spring", function (data) {
+    weath = data;
+})
+socket.on("Autumn", function (data) {
+    weath = data;
+})
+ var weath = "spring";
+
 
 
 function nkarel(matrix) {
@@ -25,6 +38,18 @@ function nkarel(matrix) {
                     rect(x * side, y * side, side, side)
                     text("🐰", x * side, y * side + tobot)
                 } else if (matrix[y][x] == 0) {
+                    if (weath == "spring") {
+                        fill("darkgreen");
+                    }
+                    else if (weath == "summer") {
+                        fill("#79a83b");
+                    }
+                    else if (weath == "autumn") {
+                        fill("#ff8453");
+                    }
+                    if (weath == "winter") {
+                        fill("#ffffff");
+                    }
                     fill("gray")
                     rect(x * side, y * side, side, side)
     
@@ -57,3 +82,39 @@ function nkarel(matrix) {
 }
 
 socket.on('send matrix',nkarel)      
+
+
+function Winter() {
+    socket.emit("winter");
+}
+function Summer() {
+    socket.emit("summer");
+}
+function Spring() {
+    socket.emit("spring");
+}
+function Autumn() {
+    socket.emit("autumn");
+}
+function AddCarrot(){
+    socket.emit("addCarrot");
+}
+function AddRabbit(){
+    socket.emit("addRabbit");
+}
+function KillAll(){
+    socket.emit("killAll");
+}
+function AddFox(){
+    socket.emit("addFox");
+}
+function AddWolf(){
+    socket.emit("addWolf");
+}
+function AddBear(){
+    socket.emit("addBear");
+}
+function AddLion(){
+    socket.emit("addLion");
+
+}
