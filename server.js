@@ -128,23 +128,17 @@ function game (){
                 carrotArr[i].mul()
                 
         }
-
-
         for(let i in rabbitArr){
                 rabbitArr[i].eat()
         }
-
-        
-        for(let i in foxArr){
+         for(let i in foxArr){
                 foxArr[i].eat()
         }
         
         for(let i in wolfArr){
                 wolfArr[i].eat()
         }
-
-       
-        for(let i in bearArr){
+         for(let i in bearArr){
                 bearArr[i].eat()
         }
 
@@ -181,23 +175,129 @@ function Autumn() {
 }
 
 
+function Kill() {
+        carrotArr = [];
+        rabbitArr = [];
+        foxArr  = [];
+        wolfArr = [];
+        bearArr = [];
+        lionArr  = [];
+        for (var y = 0; y < matrix.length; y++) {
+            for (var x = 0; x < matrix[y].length; x++) {
+                matrix[y][x] = 0;
+            }
+        }
+        io.sockets.emit("send matrix", matrix);
+    }
 
-
+    function AddCarrot() {
+        for (var i = 0; i < 7; i++) {
+            var x = Math.floor(Math.random() * matrix[0].length)
+            var y = Math.floor(Math.random() * matrix.length)
+            if (matrix[y][x] == 0) {
+                matrix[y][x] = 1;
+                var carrot = new Carrot(x, y);
+                carrotArr.push(carrot);
+            }
+        }
+        io.sockets.emit("send matrix", matrix);
+    }
+    function AddRabbit() {
+        let count = 0;
+        for (var i = 0; i < 50; i++) {
+            var x = Math.floor(Math.random() * matrix[0].length)
+            var y = Math.floor(Math.random() * matrix.length)
+            if (count < 7) {
+                if (i < 30) {
+                    if (matrix[y][x] == 0) {
+                        count++;
+                        matrix[y][x] = 2;
+                        var rabbit = new Rabbit(x, y);
+                        rabbitArr.push(rabbit);
+                    }
+    
+                } else if (i >= 30) {
+                    if (matrix[y][x] == 0 || matrix[y][x] == 1) {
+                        count++;
+                        matrix[y][x] = 2;
+                        var rabbit = new Rabbit(x, y);
+                        rabbitArr.push(rabbit);
+                    }
+                }
+            }
+    
+    
+        }
+    
+        io.sockets.emit("send matrix", matrix);
+    }
+    function AddFox() {
+        for (var i = 0; i < 7; i++) {
+            var x = Math.floor(Math.random() * matrix[0].length)
+            var y = Math.floor(Math.random() * matrix.length)
+            if (matrix[y][x] == 0) {
+                matrix[y][x] = 3;
+                var fox = new Fox(x, y);
+                foxArr.push(fox);
+            }
+        }
+        io.sockets.emit("send matrix", matrix);
+    }
+    function AddWolf() {
+        for (var i = 0; i < 7; i++) {
+            var x = Math.floor(Math.random() * matrix[0].length)
+            var y = Math.floor(Math.random() * matrix.length)
+            if (matrix[y][x] == 0) {
+                matrix[y][x] = 4;
+                var wolf = new Wolf(x, y);
+                wolfArr.push(wolf);
+            }
+        }
+        io.sockets.emit("send matrix", matrix);
+    }
+    
+    function AddBear() {
+        for (var i = 0; i < 7; i++) {
+            var x = Math.floor(Math.random() * matrix[0].length)
+            var y = Math.floor(Math.random() * matrix.length)
+            if (matrix[y][x] == 0) {
+                matrix[y][x] = 5;
+                var bear = new Bear(x, y);
+                bearArr.push(bear);
+            }
+        }
+        io.sockets.emit("send matrix", matrix);
+    }
+    function AddLion() {
+        for (var i = 0; i < 7; i++) {
+            var x = Math.floor(Math.random() * matrix[0].length)
+            var y = Math.floor(Math.random() * matrix.length)
+            if (matrix[y][x] == 0) {
+                matrix[y][x] = 6;
+                var lion = new Lion(x, y);
+                lionArr.push(lion);
+            }
+        }
+        io.sockets.emit("send matrix", matrix);
+    }
+    
 
 io.on('connection', function (socket) {
         createObject();
-
-        // socket.on("addCarrot", AddCarrot);
-        // socket.on("addRabbit", AddRabbit);
-        // socket.on("killAll", Kill);
-        // socket.on("addFox",AddFox);
-        // socket.on("addWolf", AddWolf);
-        // socket.on("addBear", AddBear);
-        // socket.on("addLion", AddLion);
+        socket.on("spring", Spring);
+        socket.on("summer", Summer);
+        socket.on("autumn", Autumn);
+        socket.on("winter", Winter);
+        socket.on("addCarrot", AddCarrot);
+        socket.on("addRabbit", AddRabbit);
+        socket.on("killAll", Kill);
+        socket.on("addFox",AddFox);
+        socket.on("addWolf", AddWolf);
+        socket.on("addBear", AddBear);
+        socket.on("addLion", AddLion);
     })
 
 var statistics = {}
-
 setInterval(function(){
        statistics.carrot = carrotArr.length
        statistics.rabbit =  rabbitArr.length
