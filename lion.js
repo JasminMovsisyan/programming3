@@ -63,7 +63,7 @@ module.exports = class Lion extends LivingCreauture {
             }
 
 
-            matrix[newY][newX] =5
+            matrix[newY][newX] =6
             matrix[this.y][this.x] = 0
 
 
@@ -88,7 +88,7 @@ module.exports = class Lion extends LivingCreauture {
                 let newX = newCell[0]
                 let newY = newCell[1]
 
-                matrix[newY][newX] = 5
+                matrix[newY][newX] = 6
                 matrix[this.y][this.x] = 0
                 
                 this.x = newX

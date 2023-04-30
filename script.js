@@ -30,18 +30,6 @@ function nkarel(matrix) {
     
     
                 if (matrix[y][x] == 1) {
-                    if (weath == "spring") {
-                        fill("darkgreen");
-                    }
-                    else if (weath == "summer") {
-                        fill("#79a83b");
-                    }
-                    else if (weath == "autumn") {
-                        fill("#ff8453");
-                    }
-                    if (weath == "winter") {
-                        fill("#ffffff");
-                    }
                     fill("orange")
                     rect(x * side, y * side, side, side)
                     text("🥕", x * side, y * side + tobot)
@@ -50,7 +38,19 @@ function nkarel(matrix) {
                     rect(x * side, y * side, side, side)
                     text("🐰", x * side, y * side + tobot)
                 } else if (matrix[y][x] == 0) {
-                    fill("gray")
+                    if (weath == "spring") {
+                        fill("#C7F500");
+                    }
+                    else if (weath == "summer") {
+                        fill("#F2F53D");
+                    }
+                    else if (weath == "autumn") {
+                        fill("#F5BB45");
+                    }
+                    if (weath == "winter") {
+                        fill("#ffffff");
+                    }
+            
                     rect(x * side, y * side, side, side)
     
                 }else if (matrix[y][x] == 3) {
